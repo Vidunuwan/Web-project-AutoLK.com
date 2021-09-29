@@ -1,39 +1,43 @@
 <?php
 
-$title="Home page";
+$title=$_REQUEST['catogery'];
 require_once('Include/header.php');
 
-include("include/Paging/Paging 1.0.php");//Paging part 1
 
-if(isset($_REQUEST['pass'])){//if login sucess login states will be =1
-	if($_REQUEST['pass']==1){
-		$_SESSION['loginStat']=1;
-	}
-	else{
-		$_SESSION['loginStat']=0;
-		$_SESSION['loginEmail']="";
-	}
-	
-}
-else{
-	$_SESSION['loginStat']=0;
-	$_SESSION['loginEmail']="";
-}
 
 include("include/NavigationBar2.php");//Include navigation bar
 
+$active="";
+$catogery=$_REQUEST['catogery'];
 
+include("include/Paging/Paging 3.0.php");//Paging part 1
+
+$sqlSubCat="SELECT DISTINCT sub_category FROM items WHERE main_category='$catogery'";
+$resultSubCat=$link->query($sqlSubCat);
 ?>
-
-<!-- Start of Slide Show-->
-<?php 
-$sourse1="Images/Slideshow/2.gif";
-$sourse2="Images/Slideshow/3.gif";
-$sourse3="Images/Slideshow/4.gif";
-include("include/SlideShow.php") ?>
-<!-- End of Slide Show-->
+<h1 style="text-align: center;"><?php echo $catogery; ?></h1>
+<div class="container">
+	<div class="row">
+		
+<?php
+while($rowSubCat=$resultSubCat->fetch_array()){
+	?>
+		<div class="col-6">
+			<div class="list-group">
+			
+				<a type="button" class="list-group-item list-group-item-action <?php echo $active;?>" href="Catogery.php?subCat=<?php echo $rowSubCat['sub_category']; ?>&amp;catogery=<?php echo $catogery?>">
+    <?php echo $rowSubCat['sub_category']; ?>
+				</a>
+			</div>
+			</div>
+			
+<?php
+}
+?>
+		
+	</div>
+</div>
 <br>
-
 
 
 
@@ -46,9 +50,7 @@ if($_SESSION['loginStat']==0){
 <?php
 }
 
-
-
-$sqlGetToHome="SELECT * FROM items LIMIT $start,12";
+$sqlGetToHome="SELECT * FROM items WHERE main_category='$catogery' LIMIT $start,12";
 $resultGetToHome=$link->query($sqlGetToHome);
 ?>
 <div class="container" >
@@ -96,7 +98,7 @@ $resultGetToHome=$link->query($sqlGetToHome);
 
 
 <?php 
-include("include/Paging/Paging 2.0.php");//Paging part 2
+include("include/Paging/Paging 4.0.php");//Paging part 2
 //include("include/footerBar.php");//footer bar 
 
 require_once('Include/footer.php');

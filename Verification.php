@@ -2,102 +2,7 @@
 $title="Verify email";
 require_once('Include/header.php');
 ?>
-<style>
-	body {
-    background-color:#FFFFFF;
-	background-image: url('');
-}
-.header {
-    width: 100%;
-    height: 300px;
-}
-.headerImage {
-    width: 100%;
-    height: 400px;
-}
-.content {
-    margin-top: 40px;
-}
-.image {
-    width: 100%;
-    height: 300px;
-}
-.container{
-    width: 400px;
-    border: 1px solid #151515 ;
-    background-color: #252526;
-    height: 410px;
-    border-radius: 2%;
-}
-.row {
-    margin-top: 15px;
-    height: 40px;
-}
-.icn {
-    margin-top: 10px;
-    padding-left: 10px;
-    font-size: 20px;
-    color: #565658 ;
-}
-.login {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #A09F9F ;
-	text-align: center;
-}
-.inputbox {
-    border-radius: 3px;
-    background-color:#Dfdfdf;
-    border: 1px solid #1D1D1E;
-    color: gray;
-    display:block;
-}
-.inputbox:focus {
-    outline: none;
-    border: none;
-}
-#signuptext {
-    padding-left: 60px;
-    color: #565658;
-    margin-top: 10px;
-}
-#signuptextb {
-
-    color: #565658;
-    margin-top: 10px;
-	text-align: center;
-}
-#signuptexta {
-    color: #646466;
-    text-decoration: none;
-}
-#signuptexta:hover {
-    color: #484849;
-}
-.submitbtn {
-    background-color: #1D1D1E;
-    border: 1px solid#151515;
-    font-weight: bold;
-    color: #565658;
-    border-radius: 2%;
-    display:block;
-    
-}
-.submitbtn2 {
-    background-color: #234565;
-    border: 1px solid# #234533;
-    font-weight: bold;
-    color: #565658;
-    border-radius: 2%;
-    display:block;
-    
-}
-.submitbtn:hover {
-    background-color: #111111;
-    box-shadow: 3px 3px #151515;
-    border: 1px solid #111111;
-}
-</style>
+<link rel="stylesheet" href="Include/CSS/Verification.css">
 <?php
 
 if(isset($_REQUEST['send'])){
@@ -138,12 +43,18 @@ if(isset($_REQUEST['verify'])){
 			
 			
 		}
-		else{
-			echo "Code did not match";
+		else{ ?>
+			<div class="alert alert-danger" role="alert" style="text-align: center;">
+  				Code did not match!
+			</div>
+<?php
 		}
 	}
-	else{
-		echo "Enter code that we sent to you";
+	else{ ?>
+			<div class="alert alert-danger" role="alert" style="text-align: center;">
+  				Enter code that we sent to you!
+			</div>
+<?php
 	}
 	
 }

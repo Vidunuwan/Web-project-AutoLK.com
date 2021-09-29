@@ -2,86 +2,11 @@
 $title="Log In";
 require_once('Include/header.php');
 ?>
+<link rel="stylesheet" href="Include/CSS/LoginPage.css">
 <style>
 	body {
     background-color:#FFFFFF;
 	background-image: url('Images/LoginPage/BG1.gif');
-}
-.header {
-    width: 100%;
-    height: 300px;
-}
-.headerImage {
-    width: 100%;
-    height: 400px;
-}
-.content {
-    margin-top: 40px;
-}
-.image {
-    width: 100%;
-    height: 300px;
-}
-.container{
-    width: 400px;
-    border: 1px solid #151515 ;
-    background-color: #252526;
-    height: 300px;
-    border-radius: 2%;
-}
-.row {
-    margin-top: 15px;
-    height: 40px;
-}
-.icn {
-    margin-top: 10px;
-    padding-left: 10px;
-    font-size: 20px;
-    color: #565658 ;
-}
-.login {
-    margin-top: 10px;
-    font-size: 20px;
-    color: #A09F9F ;
-	text-align: center;
-}
-.inputbox {
-    border-radius: 3px;
-    background-color:#252526;
-    border: 1px solid #1D1D1E;
-    color: gray;
-    display:block;
-}
-.inputbox:focus {
-    outline: none;
-    border: none;
-}
-#signuptext {
-    padding-left: 60px;
-    color: #565658;
-    margin-top: 10px;
-}
-#signuptext a {
-    color: #646466;
-    text-decoration: none;
-}
-#signuptext a:hover {
-    color: #484849;
-}
-.submitbtn {
-    background-color: #1D1D1E;
-    border: 1px solid#151515;
-    font-weight: bold;
-    color: #565658;
-    border-radius: 2%;
-    display:block;
-    
-}
-.submitbtn:hover {
-    background-color: #111111;
-    box-shadow: 3px 3px #151515;
-    border: 1px soli #111111;
-}
 </style>
 <?php
 $_SESSION['loginStat']=0;
@@ -110,8 +35,12 @@ if(isset($_REQUEST['login'])){
 			echo "Sign Up with your email before login";
 		}
 	}
-	else{
-		echo "Feild cannot be emty";
+	else{ ?>
+
+		<div class="alert alert-danger" role="alert">
+  			Feild cannot be emty!
+		</div>
+<?php
 	}
 }
 ?>

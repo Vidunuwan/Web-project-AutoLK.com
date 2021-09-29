@@ -12,22 +12,22 @@
     <div class="carousel-item active">
       <img src="<?php echo $sourse1 ?>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Welcome</h5>
+        <h3>Welcome</h3>
         <p>Sri lanka's number one online auto parts market place</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="<?php echo $sourse2 ?>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <h5>All in one place</h5>
+        <p>All the accessories your vehicle needs</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="<?php echo $sourse3 ?>" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <h5></h5>
+        <p></p>
       </div>
     </div>
   </div>

@@ -10,18 +10,21 @@ foreach($resultGetCountItem as $Count){
 	<a href="" class="navbar-brand">&emsp; AutoLK.com</a>
 	<div class="collapse navbar-collapse">
 		<ul class="navbar-nav ">
-			<li class="nav-item"><a href="../Project/HomePage.php" class="nav-link">Home</a></li>
+			<li class="nav-item"><a href="../Project/HomePage.php?pass=<?php echo $_SESSION['loginStat'];?>" class="nav-link">Home</a></li>
 		</ul>
 		<ul class="navbar-nav">
         		<li class="nav-item dropdown">
           			<a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catogery</a>
           			<ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
             			<?php 
-						$i=0;
-						while ($i<11){
-							$i++;
+						
+						$sqlCatogery="SELECT DISTINCT main_category AS main FROM items";
+						$resultCatogery=$link->query($sqlCatogery);
+						
+						while ($rowCatogery=$resultCatogery->fetch_array()){
+							
 						?>
-							<li><a class="dropdown-item" href="#"><?php echo "This is Catogery   ".$i ?></a></li>
+							<li><a class="dropdown-item" href="./Catogery.php?catogery=<?php echo $rowCatogery['main']; ?>"><?php echo $rowCatogery['main']; ?></a></li>
 						<?php
 						} 
 						?>
@@ -45,7 +48,7 @@ foreach($resultGetCountItem as $Count){
 		}
 		else{ ?>
 			<li class="nav-item"><a href="" class="nav-link"><?php echo $_SESSION['loginEmail'] ?></a></li>
-			<li class="nav-item"><a href="Homepage.php?passlogstat=0" class="nav-link">Log out</a></li>
+			<li class="nav-item"><a href="Homepage.php?pass=0" class="nav-link">Log out</a></li>
 		<?php 
 		}
 		?>	

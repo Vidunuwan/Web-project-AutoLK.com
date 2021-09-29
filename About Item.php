@@ -3,25 +3,29 @@
 $title="About";
 require_once('Include/header.php');
 
-if(isset($_REQUEST['add'])){
-	$inQyt=$_SESSION['qyt'];
-	$sqlAddCart="INSERT INTO cart VALUES('$coustemerEmail',$itemId,$inQyt)";
-	$link->query($sqlAddCart);
-}
-
 if(isset($_REQUEST['qyt'])){
 	$qyt=$_REQUEST['qyt'];	
 }
 else{
 	$qyt=1;
+	
 	$_SESSION['itemIDtoA']=$_REQUEST['itemId'];
+	$_SESSION['path1']=$_REQUEST['path1'];
+	$_SESSION['path2']=$_REQUEST['path2'];
+}
+
+$itemId=$_SESSION['itemIDtoA'];
+
+if(isset($_REQUEST['add'])){
+	$inQyt=$_SESSION['qyt'];
+	$coustemerEmail=$_SESSION['loginEmail'];
+	$sqlAddCart="INSERT INTO cart VALUES('$coustemerEmail','$itemId',$inQyt)";
+	$link->query($sqlAddCart);
 }
 
 include("include/NavigationBar2.php");//Navigation bar
-
-
-$itemId=$_SESSION['itemIDtoA'];
 ?>
+
 <link rel="stylesheet" href="include/About item/About item.css">
 <br>
 
@@ -41,15 +45,17 @@ $row=$result->fetch_array();
 		<?php include("include/About item/About item slide.php");?>
 		<div class= "buyContainer col-6">
 			<div class="content">
+				<div class="row">
+					
+				</div>
 				<div class="title">
-					<h3><?php echo $row['name']; ?></h3>
+					<h1><?php echo $row['name']; ?></h1>
 				</div>
 				<div class="row">
-					<input class="Rbtn col-3" type="button" value="Ratings 53">
-					<input type="button" value="Reviews 23" class="Rbtn col-3">
+					
 				</div>
 				<div class="row">
-					<p class="col-2">Availability&nbsp: </p>
+					<p class="col-2"><strong>Availability:&nbsp</strong> </p>
 					<?php 
 					if($row['in_stock_item']){
 					?>
@@ -64,7 +70,7 @@ $row=$result->fetch_array();
 					?>
 				</div>
 				<div class="price row">
-					<h6 class="col-2">Price&nbsp&nbsp: </h5>
+					<h6 class="col-2"><strong>Price:</strong>&nbsp&nbsp: </h5>
 					<h3 class="col-2"><?php echo $row['price']; ?>&nbsp;LKR</h3>
 				</div>
 				<div class="row quantityRow">
@@ -90,9 +96,13 @@ $row=$result->fetch_array();
 						
 					</div>
 				</div>
+				<?php
+				if($_SESSION['loginStat']==1){
+				?>
 				<div >
 					<form method="post" action="ShopingCart.php">
 						<div class="d-grid gap-2">
+							<input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
   							<input class="btn btn-primary" type="submit" value="Buy it Now" name="buy">
 						</div>
 					</form>
@@ -101,10 +111,24 @@ $row=$result->fetch_array();
 				<div >
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF']?>">
 					<div class="d-grid gap-2">
+						<input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
+						<input type="hidden" name="path1" value="<?php echo $_SESSION['path1']; ?>">
+						<input type="hidden" name="path2" value="<?php echo $_SESSION['path2']; ?>">
   						<input class="btn btn-success" type="submit" value="Add to cart" name="add">
 					</div>
 					</form>
-				</div><br>
+				</div>
+				<?php
+				}
+				else{
+				?>
+				<div class="alert alert-danger" role="alert" align="center">
+  					<b>Log in before buy products</b>
+				</div>
+				<?php
+				}
+				?>
+				<br>
 				<div class="extraText">
 					<ul>
 						<li> Free delevary islandwide</li>                           
@@ -135,8 +159,8 @@ $row=$result->fetch_array();
                                 <td>Brand new</td>
                             </tr>
                             <tr>
-                                <td>Maker</td>
-                                <td>Toyota</td>
+                                <td>Brand</td>
+                                <td><?php echo $row['Brand']; ?></td>
                             </tr>
                             <tr>
                                 <td>Compatible Brands</td>
@@ -144,23 +168,23 @@ $row=$result->fetch_array();
                             </tr>
                             <tr>
                                 <td>Warrenty</td>
-                                <td>3 years</td>
-                            </tr>
-                            <tr>
-                                <td>Material</td>
-                                <td>Iron</td>
-                            </tr>
-                            <tr>
-                                <td>Weight</td>
-                                <td>15kg</td>
+                                <td><?php echo $row['warranty_time']; ?></td>
                             </tr>
                         </table>
                     </div>
-            </div>   
+            </div>
+	<div class="content">
+			<div class= "buyContainer col-12">
+				<p><?php echo $row['short_discription']; ?></p>
+			</div>
+	</div>
 </div>
         
 
-    <!-- View done -->
+<?php
+if($_SESSION['loginStat']==1){
+	include("include//About item/Review.php");
+}
 
 
-<?php require_once('Include/footer.php');?>
+require_once('Include/footer.php');?>

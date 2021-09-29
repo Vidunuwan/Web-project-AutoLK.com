@@ -17,7 +17,7 @@
 	  
     <title><?php echo $title?></title>
   </head>
-  <body>
+  <body style="background-color: ">
 	<?php 
 	session_start();
 	include("include/connect to db.php");//Connect to database
