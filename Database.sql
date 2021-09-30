@@ -18,10 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `Team12`
+-- Database: `Team012`
 --
-CREATE DATABASE IF NOT EXISTS `Team12` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `Team12`;
+CREATE DATABASE IF NOT EXISTS `Team012` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `Team012`;
 
 -- --------------------------------------------------------
 
