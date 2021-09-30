@@ -29,34 +29,25 @@ if(isset($_REQUEST['login'])){
 			}
 			else{
 				?>
-			
-            <div>
-				<div class="alert alert-danger" role="alert" style="text-align: center;">
-  			Check your password
-				</div>
-            </div>
+			<script>
+				alert("Check your password");
+			</script>
     		
 				<?php
 			}
 		}
 		else{
 			?>
-			
-            <div>
-				<div class="alert alert-danger" role="alert" style="text-align: center;">
-  			Sing Up with your email before login!
-				</div>
-            </div>
-    		
+			<script>
+				alert("Sing Up with your email before login!");
+			</script> 		
 <?php
 		}
 	}
 	else{ ?>
-            <div>
-				<div class="alert alert-danger" role="alert" style="text-align: center;">
-  			Feild cannot be emty!
-				</div>
-            </div>
+			<script>
+				alert("Feild cannot be emty!");
+			</script>
 		
 <?php
 	}

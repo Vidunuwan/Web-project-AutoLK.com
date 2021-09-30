@@ -23,7 +23,7 @@ if(isset($_REQUEST['count'])){// update the cart if user need more quentity
 	$get=explode(" ",$str);
 	$itemID=$get[1];
 	$quantity=$get[0];
-	if($quantity>0){
+	if($quantity>0 && $quantity<=$_SESSION['in_stock_item']){
 		
 		$sqlUpdateq="UPDATE cart SET quantity='$quantity' WHERE user_id='$coustemerEmail' AND item_id='$itemID'";
 		$link->query($sqlUpdateq);
@@ -79,9 +79,11 @@ while($rowGetToCart=$resultGetToCart->fetch_array()){
                     
                     <div class="itemContent col-md-6 col-sm-6 col-lg-6">
                         <h6 class="ietemDescription" style="color: green;">
+							<?php echo $rowGetToCart['main_category'];?>,
+							<?php echo $rowGetToCart['sub_category'];?><br>
                           <b><?php echo $rowGetToCart['name'];?></b>
-                        </h6>
-                          <p class="brand col-lg-4 col-sm-4 col-mb-4"><strong>Brand :</strong><?php echo $rowGetToCart['Brand']?></p>   
+                        </h6><br>
+                          <p class="brand col-lg-8 col-sm-4 col-mb-4"><strong>Brand :</strong><?php echo $rowGetToCart['Brand'];?></p>   
                           <p class="inStock col-lg-6 col-sm-4 col-mb-4">In stock(<?php echo $rowGetToCart['in_stock_item']?> items)</p>
                        
                     </div>

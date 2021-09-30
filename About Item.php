@@ -35,7 +35,7 @@ $sql="SELECT * FROM items WHERE item_id='$itemId'";
 $result=$link->query($sql);
 $row=$result->fetch_array();
 //Get item details from item table done 
-
+$_SESSION['in_stock_item']=$row['in_stock_item'];
 ?>
 
     <!-- View -->
@@ -57,14 +57,18 @@ $row=$result->fetch_array();
 				<div class="row">
 					<p class="col-2"><strong>Availability:&nbsp</strong> </p>
 					<?php 
-					if($row['in_stock_item']){
+					if($row['in_stock_item']!=0){
+						$disabled="";
 					?>
 					<p class="col-10" style="color:#49BF16;">&nbspIn stock(<?php echo $row['in_stock_item']; ?> items) </p>
 					<?php 
 					} 
 					else{
+						$disabled="disabled";
 					?>
+					
 					<p class="col-10" style="color:#FF0004;">&nbspOut of stock </p>
+					
 					<?php 
 					} 
 					?>
@@ -78,12 +82,12 @@ $row=$result->fetch_array();
 						<strong>Quantity:</strong>
 						<a href="About Item.php?qyt=<?php echo $qyt-1;?>" class="btn btn-info">-</a>
 						<?php 
-						if($qyt>0 && $qyt<100){
+						if($qyt>0 && $qyt<$row['in_stock_item']){
 							$_SESSION['qyt']=$qyt;	
 						}
-						elseif($qyt==100){
-							$_SESSION['qyt']=99;
-							$qyt=99;
+						elseif($qyt==$row['in_stock_item']){
+							$_SESSION['qyt']=$row['in_stock_item'];
+							$qyt=$row['in_stock_item'];
 						}
 						else{
 							$_SESSION['qyt']=1;
@@ -103,7 +107,7 @@ $row=$result->fetch_array();
 					<form method="post" action="ShopingCart.php">
 						<div class="d-grid gap-2">
 							<input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
-  							<input class="btn btn-primary" type="submit" value="Buy it Now" name="buy">
+  							<input class="btn btn-primary" type="submit" value="Buy it Now" name="buy" <?php echo $disabled;?>>
 						</div>
 					</form>
 
@@ -114,7 +118,7 @@ $row=$result->fetch_array();
 						<input type="hidden" name="itemId" value="<?php echo $itemId; ?>">
 						<input type="hidden" name="path1" value="<?php echo $_SESSION['path1']; ?>">
 						<input type="hidden" name="path2" value="<?php echo $_SESSION['path2']; ?>">
-  						<input class="btn btn-success" type="submit" value="Add to cart" name="add">
+  						<input class="btn btn-success" type="submit" value="Add to cart" name="add" <?php echo $disabled;?>>
 					</div>
 					</form>
 				</div>
