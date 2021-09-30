@@ -28,26 +28,44 @@ if(isset($_REQUEST['login'])){
 				header("Location: HomePage.php?pass=1");
 			}
 			else{
-				echo "Check your password";
+				?>
+			
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
+  			Check your password
+				</div>
+            </div>
+    		
+				<?php
 			}
 		}
 		else{
-			echo "Sign Up with your email before login";
+			?>
+			
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
+  			Sing Up with your email before login!
+				</div>
+            </div>
+    		
+<?php
 		}
 	}
 	else{ ?>
-
-		<div class="alert alert-danger" role="alert">
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
   			Feild cannot be emty!
-		</div>
+				</div>
+            </div>
+		
 <?php
 	}
 }
 ?>
-	<div class="header">
-            <div>
-            </div>
-      </div>
+<div class="header">
+	<div>
+	</div>
+</div>
 
       <div class="content" >
           <div class="container" >
@@ -73,7 +91,9 @@ if(isset($_REQUEST['login'])){
               <div class="toSignup">
                 <p id="signuptext">Don't have an account? <a href="SignupPage.php">Signup</a></p>
               </div>
+			  <div class="toSignup">
+                <p id="signuptext" style="text-align:justify;"><a href="HomePage.php?pass=0"> &emsp;&emsp;&emsp;&emsp;Back to Home</a></p>
+              </div>
           </div>
       </div>
-
 <?php require_once('Include/footer.php');?>

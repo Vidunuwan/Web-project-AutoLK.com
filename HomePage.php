@@ -93,10 +93,16 @@ $resultGetToHome=$link->query($sqlGetToHome);
 	</div>	
 </div>
 
-
-
 <?php 
 include("include/Paging/Paging 2.0.php");//Paging part 2
+?>
+<div class="container-fluid">
+	<div class="row">
+		<?php include("include/footerBar.php");//footer bar ?>
+	</div>
+</div>
+<?php 
+
 //include("include/footerBar.php");//footer bar 
 
 require_once('Include/footer.php');

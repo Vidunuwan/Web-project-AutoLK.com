@@ -81,7 +81,15 @@ if(isset($_REQUEST['submit'])){
 		
 		while($rowGetdata=$rasultGetdata->fetch_array()){
 			if($eMail==$rowGetdata['e_mail']){
-				echo "E mail is alredy taken";
+				?>
+			<div class="header">
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
+  			E mail is alredy taken
+				</div>
+            </div>
+    		</div>
+	<?php
 				$insertStat=0;
 				break;
 			}
@@ -89,7 +97,15 @@ if(isset($_REQUEST['submit'])){
 		
 		if($password!=$cPassword){
 			$insertStat=0;
-			echo("Password Conformation fail");
+			?>
+			<div class="header">
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
+  			Password Conformation fail
+				</div>
+            </div>
+    		</div>
+	<?php
 		}
 		
 		if($insertStat==1){
@@ -104,7 +120,16 @@ if(isset($_REQUEST['submit'])){
 		}
 	}
 	else{ 
-	echo "Enter details";		
+		?>
+			<div class="header">
+            <div>
+				<div class="alert alert-danger" role="alert" style="text-align: center;">
+  			Field Cannot be emty!
+				</div>
+            </div>
+    		</div>
+	<?php
+		
 	}
 
 }
@@ -149,6 +174,9 @@ if(isset($_REQUEST['submit'])){
                     </div>
                     <div class="btnrow formRow">
                          &emsp;&emsp;&emsp;<input type="submit" name="submit" class="signupbtn btn btn-primary" value="Register"> 
+                    </div>
+					<div class="btnrow formRow" style="color: azure">
+						&emsp;&emsp;&emsp;<a href="LoginPage.php" class="btn btn-outline-dark">Back to Login</a> 
                     </div>
                 </form>
             </div>

@@ -35,7 +35,7 @@
     margin-left: 20xp;
 }
 </style>
-    <footer class="footer">
+
         <div class="row conten">
             <div class="col-sm-6 about">
                 <h6>About us</h6>
@@ -61,8 +61,30 @@
                 <div class="row contactRow">
                     <div class="col-sm-2"></div>
                     <i class="fa fa-envelope col-sm-1 icon" aria-hidden="true"></i>
-                    <p class="description col-sm-5">autolak@gmail.com</p>
+                    <p class="description col-sm-5">autolak17@gmail.com</p>
                 </div>
+				<?php
+				$sqlAdmin="SELECT * FROM admin";
+				$resultAdmin=$link->query($sqlAdmin);
+				while($rowAdmin=$resultAdmin->fetch_array()){
+					if($rowAdmin['admin_id']==$_SESSION['loginEmail']){
+						$adminStat=1;
+						break;
+					}
+					else{
+						$adminStat=0;
+					}
+				}
+				if($adminStat==1){
+				?>
+				<div class="row contactRow">
+                    <div class="col-sm-2"></div>
+                    <i class="fa fa-user col-sm-1 icon" aria-hidden="true"></i>
+                    <p class="description col-sm-5"><a href="Admin.php">Admin Login</a></p>
+                </div>
+				<?php 
+				} 
+				?> 
                 
             </div>
         </div>
@@ -73,4 +95,4 @@
             <i class="fa fa-twitter col-sm-1 fa-lg iconSocialMedia" style="color: #1DA1F2;" aria-hidden="true"></i>
             <i class="fa fa-youtube-play col-sm-1 fa-lg iconSocialMedia" style="color: #FF0000;" aria-hidden="true"></i>
         </div>
-    </footer>
+

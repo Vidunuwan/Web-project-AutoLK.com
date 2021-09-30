@@ -14,13 +14,13 @@ $headers  = 'From: [autolk17]@gmail.com' . "\r\n" .
 if(mail($to, $subject, $message, $headers)){
 	?>
 <div class="alert alert-success" role="alert" style="text-align: center;">
-  Email Sent Successfuly
+  Code Sent Successfuly
 </div>
 <?php }    
 else{
 	?>
 <div class="alert alert-danger" role="alert" style="text-align: center;">
-  Email Sending Failed!
+  Code Sending Failed!
 </div>
 <?php
 }
