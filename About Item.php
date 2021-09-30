@@ -3,6 +3,8 @@
 $title="About";
 require_once('Include/header.php');
 
+
+
 if(isset($_REQUEST['qyt'])){
 	$qyt=$_REQUEST['qyt'];	
 }
@@ -24,6 +26,10 @@ if(isset($_REQUEST['add'])){
 }
 
 include("include/NavigationBar2.php");//Navigation bar
+
+$sql_re="SELECT user_id FROM review WHERE item_id='$itemId'";
+$result_re=$link->query($sql_re);
+$reviewCount=($result_re->num_rows);
 ?>
 
 <link rel="stylesheet" href="include/About item/About item.css">
@@ -72,6 +78,10 @@ $_SESSION['in_stock_item']=$row['in_stock_item'];
 					<?php 
 					} 
 					?>
+				</div>
+				<div class="price row">
+					<h6 class="col-4" style="color: #E8AE03"><?php echo $reviewCount; ?>&nbsp;Reveiw</h6>
+					<h6 class="col-4" style="color: #E8AE03"><?php echo round($row['rating'], 2); ?>&nbsp;Rating</h6>
 				</div>
 				<div class="price row">
 					<h6 class="col-2"><strong>Price:</strong>&nbsp&nbsp: </h5>
