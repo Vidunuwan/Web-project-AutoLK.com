@@ -12,9 +12,9 @@ $_SESSION['totPrice']=$_REQUEST['totPrice'];
   				 text-align: center;" >
               <form method="post" action="https://sandbox.payhere.lk/pay/checkout">   
     			<input type="hidden" name="merchant_id" value="1218716">    <!-- Replace your Merchant ID -->
-    			<input type="hidden" name="return_url" value="http://se/Project/Payment%20success.php">
-    			<input type="hidden" name="cancel_url" value="http://se/Project/Homepage.php?pass=0">
-    			<input type="hidden" name="notify_url" value="http://se/Project/Homepage.php?pass=0">  
+    			<input type="hidden" name="return_url" value="http://se/Team012/Payment%20success.php">
+    			<input type="hidden" name="cancel_url" value="http://se/Team012/Homepage.php?pass=0">
+    			<input type="hidden" name="notify_url" value="http://se/Team012/Homepage.php?pass=0">  
     			
     			<input type="hidden" name="order_id" value="ItemNo12345">
     			<input type="hidden" name="items" value="Door bell wireless"><br>

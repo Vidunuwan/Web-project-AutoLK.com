@@ -10,7 +10,7 @@ foreach($resultGetCountItem as $Count){
 	<a href="" class="navbar-brand">&emsp; AutoLK.com</a>
 	<div class="collapse navbar-collapse">
 		<ul class="navbar-nav ">
-			<li class="nav-item"><a href="../Project/HomePage.php?pass=<?php echo $_SESSION['loginStat'];?>" class="nav-link">Home</a></li>
+			<li class="nav-item"><a href="./HomePage.php?pass=<?php echo $_SESSION['loginStat'];?>" class="nav-link">Home</a></li>
 		</ul>
 		<ul class="navbar-nav">
         		<li class="nav-item dropdown">

@@ -56,6 +56,7 @@ $_SESSION['in_stock_item']=$row['in_stock_item'];
 				</div>
 				<div class="title">
 					<h1><?php echo $row['name']; ?></h1>
+					<h4><?php echo $row['main_category']; ?>,<?php echo $row['sub_category']; ?></h4>
 				</div>
 				<div class="row">
 					
@@ -197,7 +198,7 @@ $_SESSION['in_stock_item']=$row['in_stock_item'];
 
 <?php
 if($_SESSION['loginStat']==1){
-	include("include//About item/Review.php");
+	include("include/About item/Review.php");
 }
 
 
