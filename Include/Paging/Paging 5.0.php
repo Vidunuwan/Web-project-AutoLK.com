@@ -9,7 +9,7 @@ else{
 	$start=0;
 }
 //Get last page
-$sql_all="SELECT item_id FROM items WHERE main_category='$catogery'";
+$sql_all="SELECT item_id FROM items WHERE main_category='$catogery' AND sub_category='$subcatogery'";
 $result_all=$link->query($sql_all);
 $last_page=ceil(($result_all->num_rows)/12);
 //echo $last_page;

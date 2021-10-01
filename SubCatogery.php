@@ -9,8 +9,9 @@ include("include/NavigationBar2.php");//Include navigation bar
 
 $active="";
 $catogery=$_REQUEST['catogery'];
+$subcatogery=$_REQUEST['subCat'];
 
-include("include/Paging/Paging 3.0.php");//Paging part 1
+include("include/Paging/Paging 5.0.php");//Paging part 1
 
 $sqlSubCat="SELECT DISTINCT sub_category FROM items WHERE main_category='$catogery'";
 $resultSubCat=$link->query($sqlSubCat);
@@ -34,7 +35,7 @@ while($rowSubCat=$resultSubCat->fetch_array()){
 <?php
 }
 ?>
-		
+<h3 style="text-align: center;"><?php echo $subcatogery; ?></h3>		
 	</div>
 </div>
 <br>
@@ -50,7 +51,7 @@ if($_SESSION['loginStat']==0){
 <?php
 }
 
-$sqlGetToHome="SELECT * FROM items WHERE main_category='$catogery' LIMIT $start,12";
+$sqlGetToHome="SELECT * FROM items WHERE main_category='$catogery' AND sub_category='$subcatogery' LIMIT $start,12";
 $resultGetToHome=$link->query($sqlGetToHome);
 ?>
 <div class="container" >
@@ -98,7 +99,7 @@ $resultGetToHome=$link->query($sqlGetToHome);
 
 
 <?php 
-include("include/Paging/Paging 4.0.php");//Paging part 2
+include("include/Paging/Paging 6.0.php");//Paging part 2
 //include("include/footerBar.php");//footer bar 
 
 require_once('Include/footer.php');
